@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-export default function MealItem() {
+export default function MealItem({title}) {
   return (
     <View>
-      <Text>MealItem</Text>
+          <Text>{title}</Text>
     </View>
   )
 }
