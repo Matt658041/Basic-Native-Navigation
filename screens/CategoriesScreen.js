@@ -4,12 +4,18 @@ import { CATEGORIES } from "../data/dummy-data";
 import CategoryGridTile from "../components/CategoryGridTile";
 
 function renderCategoryItem(itemData) {
+
+  function pressHandler() {
+
+  }
+
   return (
-    <CategoryGridTile title={itemData.item.title} color={itemData.item.color} />
+    <CategoryGridTile title={itemData.item.title} color={itemData.item.color} onPress={pressHandler} />
   );
 }
 
-export default function CategoriesScreen() {
+export default function CategoriesScreen({ navigation }) {
+  
   return (
     <FlatList
       data={CATEGORIES}
