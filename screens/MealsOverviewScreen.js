@@ -4,7 +4,6 @@ import React from "react";
 import MealItem from "../components/MealItem";
 //import { useRoute } from '@react-navigation/native';
 
-
 export default function MealsOverviewScreen({ route }) {
   //const route = useRoute(); this is an alternative hook you can use for routing in a nested component
   //route.params
@@ -14,8 +13,10 @@ export default function MealsOverviewScreen({ route }) {
     return mealItem.categoryIds.indexOf(catId) >= 0;
   });
 
-    function renderMealItem(itemData) {
-        return <MealItem title={itemData.item.title} />
+  function renderMealItem(itemData) {
+    return (
+      <MealItem title={itemData.item.title} imageUrl={itemData.item.imageUrl} />
+    );
   }
 
   return (
