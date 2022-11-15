@@ -4,6 +4,7 @@ import CategoriesScreen from "./screens/CategoriesScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen";
+import MealDetailScreen from "./screens/MealDetailScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -31,12 +32,13 @@ export default function App() {
             component={MealsOverviewScreen}
             //this is one way to dynamically render id titles in header
             //options={({ route, navigation }) => {
-              //const catId = route.params.categoryId;
-              //return {
-               // title: catId
-              //};
+            //const catId = route.params.categoryId;
+            //return {
+            // title: catId
+            //};
             //}}
           />
+          <Stack.Screen name="MealDetail" component={MealDetailScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
