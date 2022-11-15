@@ -1,10 +1,10 @@
 import { View, FlatList, StyleSheet, Text } from "react-native";
-import { MEALS } from "../data/dummy-data";
-import React from "react";
+import { MEALS, CATEGORIES } from "../data/dummy-data";
+import React, { useLayoutEffect } from "react";
 import MealItem from "../components/MealItem";
 //import { useRoute } from '@react-navigation/native';
 
-export default function MealsOverviewScreen({ route }) {
+export default function MealsOverviewScreen({ route, navigation }) {
   //const route = useRoute(); this is an alternative hook you can use for routing in a nested component
   //route.params
   const catId = route.params.categoryId;
@@ -13,10 +13,27 @@ export default function MealsOverviewScreen({ route }) {
     return mealItem.categoryIds.indexOf(catId) >= 0;
   });
 
+  useLayoutEffect(() => {
+    const categoryTitle = CATEGORIES.find(
+      (category) => category.id === catId
+    ).title;
+
+    navigation.setOptions({
+      title: categoryTitle,
+    });
+  }, [catId, navigation]);
+
   function renderMealItem(itemData) {
-    return (
-      <MealItem title={itemData.item.title} imageUrl={itemData.item.imageUrl} />
-    );
+    const item = itemData.item;
+
+    const mealtItemProps = {
+      title: item.title,
+      imageUrl: item.imageUrl,
+      affordability: item.affordability,
+      complexity: item.complexity,
+      duration: item.duration,
+    };
+    return <MealItem {...mealtItemProps} />;
   }
 
   return (
